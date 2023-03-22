@@ -22,6 +22,7 @@ gallery.addEventListener('click', (event) => {
     `);
 
     instance.show();
+    document.addEventListener('keydown', closeModalOnEsc);
   }
 });
 
@@ -46,6 +47,11 @@ const openModal = (event) => {
 
 const closeModal = () => {
   instance.close();
+  document.removeEventListener('keydown', closeModalOnEsc);
 };
-
+const closeModalOnEsc = (event) => {
+  if (event.key === 'Escape') {
+    closeModal();
+  }
+};
 renderGallery();
